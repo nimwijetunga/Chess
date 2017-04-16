@@ -52,25 +52,13 @@ public class Player {
 		//Bishops
 		pieces.add(new Bishop(color, tiles[height - dif][2], main));		
 		pieces.add(new Bishop(color, tiles[height - dif][width - 3], main));
-		//Queens
+		//Queen
 		pieces.add(new Queen(color, tiles[height - dif][width - 4], main));
-		//Kings
+		//King
 		pieces.add(new King(color, tiles[height - dif][width - 5], main));
 	}
 
 	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}
-
-	/*public void initWhite(){
-		for(int i = 0; i < 8; i++)
-			pieces.add(new Pawn(Type.WHITE, tiles[1][i], main));
-		pieces.add(new Rook(Type.WHITE, tiles[0][0], main));
-		pieces.add(new Rook(Type.WHITE, tiles[0][size.width - 1], main));
-		pieces.add(new Knight(Type.WHITE, tiles[0][1], main));
-		pieces.add(new Knight(Type.WHITE, tiles[0][size.width - 2], main));
-		pieces.add(new Bishop(Type.WHITE, tiles[0][2], main));		
-		pieces.add(new Bishop(Type.WHITE, tiles[0][size.width - 3], main));
-	}*/
-
 }

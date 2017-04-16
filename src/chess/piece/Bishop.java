@@ -42,7 +42,6 @@ public class Bishop extends Piece{
 				}
 			}else{
 				int y = (int) (moveTile.getY() / Tile.SIZE);
-				System.out.println(y);
 				if(moveTile.getY() < tile.getY()){
 					for(int i =(int) (moveTile.getX() / Tile.SIZE); i < tile.getX() / Tile.SIZE; i++){
 						Tile t = tiles[y][i];
@@ -66,7 +65,7 @@ public class Bishop extends Piece{
 	public boolean hasPiece(Tile t, Tile moveTile){
 		if(t.containsAlly(this))
 			return true;
-		if(t.containsEnemy(this) && (t.getY() != moveTile.getY() || t.getX() != moveTile.getX()))
+		if(t.containsEnemy(this) && !t.equals(moveTile))
 			return true;
 		return false;
 	}
