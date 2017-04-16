@@ -15,9 +15,8 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 
 	private int mx,my;
 	private boolean wT, bT;
-	ArrayList<Piece> white;
-	ArrayList<Piece> black;
-	Main main;
+	private ArrayList<Piece> white, black;
+	private Main main;
 
 	public MouseHandler(Main main){
 		this.main = main;

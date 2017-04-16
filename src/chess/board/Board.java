@@ -42,35 +42,6 @@ public class Board  extends JPanel{
 		pB = new Player(Type.BLACK, tiles, main,tmp);
 	}
 	
-	/*public void addPieces(){
-		//Pawns
-		for(int i = 0; i < 8; i++){
-			pices.add(new Pawn(Type.WHITE, tiles[1][i], main));
-			pices.add(new Pawn(Type.BLACK, tiles[height - 2][i], main));
-		}
-		//Rooks
-		pices.add(new Rook(Type.WHITE, tiles[0][0], main));
-		pices.add(new Rook(Type.WHITE, tiles[0][width - 1], main));
-		pices.add(new Rook(Type.BLACK, tiles[height - 1][0], main));
-		pices.add(new Rook(Type.BLACK, tiles[height - 1][width - 1], main));
-		//Knights
-		pices.add(new Knight(Type.WHITE, tiles[0][1], main));
-		pices.add(new Knight(Type.WHITE, tiles[0][width - 2], main));
-		pices.add(new Knight(Type.BLACK, tiles[height - 1][1], main));
-		pices.add(new Knight(Type.BLACK, tiles[height - 1][width - 2], main));
-		//Bishops
-		pices.add(new Bishop(Type.WHITE, tiles[0][2], main));		
-		pices.add(new Bishop(Type.WHITE, tiles[0][width - 3], main));
-		pices.add(new Bishop(Type.BLACK, tiles[height - 1][2], main));		
-		pices.add(new Bishop(Type.BLACK, tiles[height -1 ][width - 3], main));
-		//Queens
-		pices.add(new Queen(Type.WHITE, tiles[0][width - 4], main));
-		pices.add(new Queen(Type.BLACK, tiles[height - 1][width - 4], main));
-		//Kings
-		pices.add(new King(Type.WHITE, tiles[0][width - 5], main));
-		pices.add(new King(Type.BLACK, tiles[height - 1][width - 5], main));
-	}*/
-	
 	public void removePiece(Tile tile, Type color){
 		ArrayList<Piece> pices;
 		if(color == Type.WHITE)
@@ -78,9 +49,8 @@ public class Board  extends JPanel{
 		else
 			pices = pB.getPieces();
 		for(int i = 0; i < pices.size(); i++){
-			if(pices.get(i).getTile() == tile && pices.get(i).getColor() == color){
+			if(pices.get(i).getTile() == tile && pices.get(i).getColor() == color)
 				pices.remove(i);
-			}
 		}
 		
 	}

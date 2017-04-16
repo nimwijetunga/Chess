@@ -35,7 +35,7 @@ public class Player {
 	public void initPieces(){
 		int width = size.width, height = 0, dif = 0;
 		if(color == Type.BLACK){
-			height = size.width;
+			height = size.height;
 			for(int i = 0; i < 8; i++)
 				pieces.add(new Pawn(Type.BLACK, tiles[height - 2][i], main));
 			dif = 1;
