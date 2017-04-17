@@ -43,8 +43,8 @@ public class Pawn extends Piece{
 			return false;
 		if(dX != 1 && dX != -1)
 			return false;
-		if((dY == -1 || dX == 1) && moveTile.containsEnemy(this))
-				return true;
+		if((dY == -1 || dY == 1) && moveTile.containsEnemy(this))
+			return true;
 		return false;
 	}
 
