@@ -14,9 +14,7 @@ public class King extends Piece{
 	public boolean moveValid(Tile moveTile) {
 		int deltaX = (int) Math.abs((tile.getX() - moveTile.getX())) / Tile.SIZE;
 		int deltaY = (int) Math.abs(((tile.getY()) - moveTile.getY())) / Tile.SIZE;
-		if((deltaX == 0 && deltaY == 1) || (deltaY == 0 && deltaX == 1))
-			return true;
-		else if((deltaX == 1 && deltaY == 1))
+		if((deltaX == 0 && deltaY == 1) || (deltaY == 0 && deltaX == 1) || (deltaX == 1 && deltaY == 1))
 			return true;
 		return false;
 	}

@@ -34,10 +34,10 @@ public class Board  extends JPanel{
 		this.main = main;
 		tiles = new Tile[width][height];
 		createTiles();
-		initPlayers(main);
+		initPlayers();
 	}
 	
-	public void initPlayers(Main main){
+	public void initPlayers(){
 		Dimension tmp = new Dimension(width, height);
 		pW = new Player(Type.WHITE, tiles, main,tmp);
 		pB = new Player(Type.BLACK, tiles, main,tmp);
@@ -94,6 +94,7 @@ public class Board  extends JPanel{
 			g.setColor(Color.BLACK);
 		else
 			g.setColor(Color.WHITE);
+		//Turn Color
 		g.fillRect(480, 0, Tile.SIZE, Tile.SIZE);
 		g.setColor(Color.RED);
 		for(int i = 0; i < 5; i++)
