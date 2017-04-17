@@ -35,8 +35,8 @@ public class Bishop extends Piece implements BishopInterface{
 					return true;
 			}
 		}else{
-			for(int i =(int) (moveTile.getX() / Tile.SIZE); i < tile.getX() / Tile.SIZE - 1; i++){
-				Tile t = tiles[y + dif][i];
+			for(int i = (int) (tile.getX() / Tile.SIZE); i > moveTile.getX() / Tile.SIZE; i--){
+				Tile t = tiles[y + dif][i - 1];
 				y += dif;
 				if(t.containsAlly(this) || (t.containsEnemy(this) && !t.equals(moveTile))){
 					return true;
