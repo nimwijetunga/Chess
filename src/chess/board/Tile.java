@@ -12,6 +12,7 @@ public class Tile extends Rectangle{
 	private Color color, origColor;
 
 	public static final int SIZE = 60;
+	private boolean selected;
 	private Piece piece;
 	
 	public Tile(int x, int y, Color color, Piece piece){
@@ -20,6 +21,7 @@ public class Tile extends Rectangle{
 		this.color = color;
 		this.origColor = color;
 		this.piece = piece;
+		setSelected(false);
 		this.setBounds(x * Tile.SIZE, y * Tile.SIZE, Tile.SIZE, Tile.SIZE);
 	}
 	
@@ -71,6 +73,14 @@ public class Tile extends Rectangle{
 
 	public void setOrigColor(Color origColor) {
 		this.origColor = origColor;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 }

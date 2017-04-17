@@ -1,6 +1,7 @@
 package chess.board;
 
 import java.applet.Applet;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,7 +16,7 @@ public class Main extends Applet implements Runnable{
 
 	private static JFrame display;
 	private static Main main;
-	private Dimension size = new Dimension (475, 475);
+	private Dimension size = new Dimension (540, 475);
 	private boolean runGame;
 	private Image displayImg;
 	

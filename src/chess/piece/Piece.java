@@ -41,6 +41,7 @@ public abstract class Piece extends Rectangle{
 			if(moveTile.getPiece() != null)
 				main.getBoard().removePiece(moveTile, moveTile.getPiece().getColor());
 			tile.setPiece(null);
+			tile.setSelected(false);
 			this.setTile(moveTile);
 			moveTile.setPiece(this);
 			this.setBounds(moveTile.x, moveTile.y, Tile.SIZE, Tile.SIZE);

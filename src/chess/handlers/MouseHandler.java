@@ -14,7 +14,8 @@ import chess.piece.Type;
 public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 
 	private int mx,my;
-	private boolean wT, bT;
+	public static boolean wT, bT;
+
 	private ArrayList<Piece> white, black;
 	private Main main;
 
@@ -42,7 +43,13 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 		for(Piece i : tmp){
 			if(i.contains(mx, my) && i.isSelected() == false){
 				i.setSelected(true);
-				System.out.println("Selected");
+				Color c;
+				if(wT)
+					c = Color.RED;
+				else
+					c = Color.GREEN;
+				i.getTile().setColor(c);
+				i.getTile().setSelected(true);
 			}
 		}
 	}
@@ -66,18 +73,23 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 			}
 		}
 		for(Piece i : tmp){
-			if(i.isSelected() && moveTile != null && !moveTile.containsAlly(i) && moveTile != i.getTile()){
-				boolean switchM = i.move(moveTile);
-				if(switchM){
-					if(wT){
-						wT = false;
-						bT = true;
-					}
-					else if(bT){
-						bT = false;
-						wT = true;
+			if(i.isSelected() && moveTile != null && moveTile != i.getTile()){
+				if(!moveTile.containsAlly(i)){
+					boolean switchM = i.move(moveTile);
+					if(switchM){
+						if(wT){
+							wT = false;
+							bT = true;
+						}
+						else if(bT){
+							bT = false;
+							wT = true;
+						}
 					}
 				}
+				i.setSelected(false);
+				i.getTile().setSelected(false);
+				i.getTile().setColor(i.getTile().getOrigColor());
 			}
 		}
 	}
@@ -100,10 +112,18 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 							t.setColor(Color.GREEN);
 						else if (t.getPiece().getColor() == Type.WHITE)
 							t.setColor(Color.RED);
-					}else
+					}else if(!t.contains(mx,my) && !t.isSelected())
 						t.setColor(t.getOrigColor());
 				}
 			}
 		}catch(Exception c){}
+	}
+
+	public boolean iswT() {
+		return wT;
+	}
+
+	public boolean isbT() {
+		return bT;
 	}
 }

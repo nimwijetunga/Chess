@@ -27,7 +27,7 @@ public class Pawn extends Piece{
 						return true;
 				}
 			}
-			if(deltaY == -1 && tmp[(int) (tile.getX() / Tile.SIZE)][(int) (moveTile.getY() / Tile.SIZE)].getPiece() == null)
+			if(deltaY == -1 && tmp[(int) (moveTile.getY() / Tile.SIZE)][(int) (tile.getX() / Tile.SIZE)].getPiece() == null)
 				return true;
 		}else{
 			if(tile.getY()/ Tile.SIZE == 6){
@@ -36,7 +36,7 @@ public class Pawn extends Piece{
 						return true;
 				}
 			}
-			if(deltaY == 1 && tmp[(int) (tile.getX() / Tile.SIZE)][(int) (moveTile.getY() / Tile.SIZE )].getPiece() == null)
+			if(deltaY == 1 && tmp[(int) (moveTile.getY() / Tile.SIZE )][(int) (tile.getX() / Tile.SIZE)].getPiece() == null)
 				return true;
 		}
 		return false;

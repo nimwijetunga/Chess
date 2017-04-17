@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import chess.handlers.MouseHandler;
 import chess.handlers.Player;
 import chess.piece.Bishop;
 import chess.piece.King;
@@ -89,7 +90,14 @@ public class Board  extends JPanel{
 		pices = pB.getPieces();
 		for(int i = 0; i < pices.size(); i++)
 			g.drawImage(pices.get(i).getImage(), (int) (pices.get(i).getTile().getX()), (int) (pices.get(i).getTile().getY()), null);
-		
+		if(MouseHandler.bT)
+			g.setColor(Color.BLACK);
+		else
+			g.setColor(Color.WHITE);
+		g.fillRect(480, 0, Tile.SIZE, Tile.SIZE);
+		g.setColor(Color.RED);
+		for(int i = 0; i < 5; i++)
+			g.drawRect(480, 0, Tile.SIZE - i, Tile.SIZE - i);
 	}
 
 	public Tile[][] getTiles() {
