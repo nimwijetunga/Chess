@@ -16,9 +16,10 @@ public abstract class Piece extends Rectangle{
 	private static final long serialVersionUID = 1L;
 	
 	protected Type type, color;
+
 	protected Tile tile;
 
-	protected boolean canMove, isSelected;
+	protected boolean isSelected;
 
 	protected BufferedImage image;
 	
@@ -29,7 +30,6 @@ public abstract class Piece extends Rectangle{
 		this.color = color;
 		this.tile = tile;
 		this.main = main;
-		canMove = false;
 		isSelected = false;
 		this.setBounds((int) tile.getX(), (int) tile.getY(), Tile.SIZE, Tile.SIZE);
 		tile.setPiece(this);
@@ -78,15 +78,6 @@ public abstract class Piece extends Rectangle{
 		return image;
 	}
 	
-	
-	public boolean CanMove() {
-		return canMove;
-	}
-	
-	public void setCanMove(boolean canMove) {
-		this.canMove = canMove;
-	}
-	
 	public Tile getTile() {
 		return tile;
 	}
@@ -104,5 +95,9 @@ public abstract class Piece extends Rectangle{
 	
 	public Type getColor() {
 		return color;
+	}
+	
+	public Type getType() {
+		return type;
 	}
 }

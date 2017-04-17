@@ -27,8 +27,11 @@ public class Board  extends JPanel{
 
 	private Main main;
 	private Player pW, pB;
+	
+	private boolean endGame;
 
 	public Board(int width, int height, Main main){
+		endGame = false;
 		this.width = width;
 		this.height = height;
 		this.main = main;
@@ -39,8 +42,8 @@ public class Board  extends JPanel{
 	
 	public void initPlayers(){
 		Dimension tmp = new Dimension(width, height);
-		pW = new Player(Type.WHITE, tiles, main,tmp);
-		pB = new Player(Type.BLACK, tiles, main,tmp);
+		pW = new Player(Type.WHITE, tiles, main, tmp);
+		pB = new Player(Type.BLACK, tiles, main, tmp);
 	}
 	
 	public void removePiece(Tile tile, Type color){
@@ -50,8 +53,12 @@ public class Board  extends JPanel{
 		else
 			pices = pB.getPieces();
 		for(int i = 0; i < pices.size(); i++){
-			if(pices.get(i).getTile() == tile && pices.get(i).getColor() == color)
+			if(pices.get(i).getTile() == tile && pices.get(i).getColor() == color){
+				if(pices.get(i).getType() == Type.KING){
+					endGame = true;
+				}
 				pices.remove(i);
+			}
 		}
 		
 	}
@@ -62,14 +69,12 @@ public class Board  extends JPanel{
 				Color c;
 				if((i + 1) % 2 != 0){
 					c = Color.BLUE;
-					if((j + 1) % 2 == 0){
+					if((j + 1) % 2 == 0)
 						c = Color.ORANGE;
-					}
 				}else{
 					c = Color.ORANGE;
-					if((j + 1) % 2 == 0){
+					if((j + 1) % 2 == 0)
 						c = Color.BLUE;
-					}
 				}
 				tiles[i][j] = new Tile(j,i,c,null);
 			}
@@ -87,7 +92,7 @@ public class Board  extends JPanel{
 		ArrayList<Piece> pices = pW.getPieces();
 		for(int i = 0; i < pices.size(); i++)
 			g.drawImage(pices.get(i).getImage(), (int) (pices.get(i).getTile().getX()), (int) (pices.get(i).getTile().getY()), null);
-		pices = pB.getPieces();
+		pices = pB.getPieces(); 
 		for(int i = 0; i < pices.size(); i++)
 			g.drawImage(pices.get(i).getImage(), (int) (pices.get(i).getTile().getX()), (int) (pices.get(i).getTile().getY()), null);
 		if(MouseHandler.bT)

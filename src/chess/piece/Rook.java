@@ -5,7 +5,7 @@ package chess.piece;
 import chess.board.Main;
 import chess.board.Tile;
 
-public class Rook extends Piece{
+public class Rook extends Piece implements RookInterface{
 
 	private static final long serialVersionUID = 1L;
 

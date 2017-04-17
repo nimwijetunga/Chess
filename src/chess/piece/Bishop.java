@@ -3,7 +3,7 @@ package chess.piece;
 import chess.board.Main;
 import chess.board.Tile;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece implements BishopInterface{
 
 	private static final long serialVersionUID = 1L;
 
@@ -15,12 +15,12 @@ public class Bishop extends Piece{
 		double deltaX = tile.getX() - moveTile.getX();
 		double deltaY = tile.getY() - moveTile.getY();
 		double slope = deltaY / deltaX;
-		if(!pathBlocked(moveTile) && (slope == 1 || slope == -1))
+		if(!pathBlocked(moveTile, tile) && (slope == 1 || slope == -1))
 			return true;
 		return false;
 	}
 
-	public boolean pathBlocked(Tile moveTile){
+	public boolean pathBlocked(Tile moveTile, Tile tile){
 		Tile [][] tiles = main.getBoard().getTiles();
 		int y = (int) (tile.getY() / Tile.SIZE), dif = 0;
 		if(moveTile.getY() < tile.getY())
@@ -35,11 +35,12 @@ public class Bishop extends Piece{
 					return true;
 			}
 		}else{
-			for(int i =(int) (moveTile.getX() / Tile.SIZE); i < tile.getX() / Tile.SIZE; i++){
-				Tile t = tiles[y][i];
+			for(int i =(int) (moveTile.getX() / Tile.SIZE); i < tile.getX() / Tile.SIZE - 1; i++){
+				Tile t = tiles[y + dif][i];
 				y += dif;
-				if(t.containsAlly(this) || (t.containsEnemy(this) && !t.equals(moveTile)))
+				if(t.containsAlly(this) || (t.containsEnemy(this) && !t.equals(moveTile))){
 					return true;
+				}
 			}
 		}
 		return false;

@@ -24,8 +24,7 @@ public class Main extends Applet implements Runnable{
 	private final int TARGET_FPS = 100; 
 	private final long optimalTime = 1000000000/  TARGET_FPS; 
 	private long lastFPS = 0;
-	private int FPS = 0;
-	private int renderFPS = 0;
+	private int FPS = 0, renderFPS = 0;
 
 	
 	public static void main (String [] args){
@@ -114,4 +113,13 @@ public class Main extends Applet implements Runnable{
 
 		g.dispose();
 	}
+	
+	public boolean isRunGame() {
+		return runGame;
+	}
+
+	public void setRunGame(boolean runGame) {
+		this.runGame = runGame;
+	}
+
 }
