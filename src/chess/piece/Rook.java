@@ -49,17 +49,13 @@ public class Rook extends Piece{
 				for(Tile t : j){
 					if(vertical){
 						if(t.getX() == tile.getX()  && t.getY() / Tile.SIZE == i){
-							if(t.containsAlly(this))
+							if(t.containsAlly(this) || (t.containsEnemy(this) && t.getY() != moveTile.getY()))
 								return true;
-							if(t.containsEnemy(this) && t.getY() != moveTile.getY())
-									return true;
 						}
 					}else{
 						if(t.getX() / Tile.SIZE == i  && t.getY() == tile.getY()){
-							if(t.containsAlly(this))
+							if(t.containsAlly(this) || (t.containsEnemy(this) && t.getX() != moveTile.getX()))
 								return true;
-							if(t.containsEnemy(this) && t.getX() != moveTile.getX())
-									return true;
 						}
 					}
 				}
