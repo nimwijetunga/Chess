@@ -31,7 +31,7 @@ public class Board  extends JPanel{
 	private boolean endGame;
 
 	public Board(int width, int height, Main main){
-		endGame = false;
+		setEndGame(false);
 		this.width = width;
 		this.height = height;
 		this.main = main;
@@ -54,9 +54,8 @@ public class Board  extends JPanel{
 			pices = pB.getPieces();
 		for(int i = 0; i < pices.size(); i++){
 			if(pices.get(i).getTile() == tile && pices.get(i).getColor() == color){
-				if(pices.get(i).getType() == Type.KING){
-					endGame = true;
-				}
+				if(pices.get(i).getType() == Type.KING)
+					setEndGame(true);
 				pices.remove(i);
 			}
 		}
@@ -68,13 +67,13 @@ public class Board  extends JPanel{
 			for(int j = 0; j < tiles[i].length; j++){
 				Color c;
 				if((i + 1) % 2 != 0){
-					c = Color.BLUE;
+					c = new Color(222,184,135);
 					if((j + 1) % 2 == 0)
-						c = Color.ORANGE;
+						c = new Color(139,69,19);
 				}else{
-					c = Color.ORANGE;
+					c = new Color(139,69,19);
 					if((j + 1) % 2 == 0)
-						c = Color.BLUE;
+						c = new Color(222,184,135);
 				}
 				tiles[i][j] = new Tile(j,i,c,null);
 			}
@@ -83,6 +82,9 @@ public class Board  extends JPanel{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		if(endGame)
+			createTiles();
+		
 		for(Tile [] i : tiles){
 			for(Tile t : i){
 				g.setColor(t.getColor());
@@ -104,6 +106,8 @@ public class Board  extends JPanel{
 		g.setColor(Color.RED);
 		for(int i = 0; i < 5; i++)
 			g.drawRect(480, 0, Tile.SIZE - i, Tile.SIZE - i);
+		if(endGame)
+			main.setRunGame(false);
 	}
 
 	public Tile[][] getTiles() {
@@ -125,6 +129,14 @@ public class Board  extends JPanel{
 
 	public Player getpB() {
 		return pB;
+	}
+
+	public boolean isEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(boolean endGame) {
+		this.endGame = endGame;
 	}
 }
 

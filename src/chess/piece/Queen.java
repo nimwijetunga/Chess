@@ -19,9 +19,9 @@ public class Queen extends Piece implements RookInterface, BishopInterface{
 		double deltaX = tile.getX() - moveTile.getX();
 		double deltaY = tile.getY() - moveTile.getY();
 		double slope = deltaY / deltaX;
-		if(!pathBlocked(moveTile, tile) && (slope == 1 || slope == -1))
+		if(((tile.getX() == moveTile.getX()) || (tile.getY() == moveTile.getY())) && isBlocked(moveTile) == false)
 			return true;
-		else if(((tile.getX() == moveTile.getX()) || (tile.getY() == moveTile.getY())) && isBlocked(moveTile) == false)
+		else if(!pathBlocked(moveTile, tile) && (slope == 1 || slope == -1))
 			return true;
 		return false;
 	}
