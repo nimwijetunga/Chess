@@ -39,7 +39,9 @@ public class Pawn extends Piece{
 	}
 	
 	public boolean canTake(Tile moveTile, int dX, int dY){
-		if(moveTile.getPiece() == null || (dX != 1 && dX != -1))
+		if(moveTile.getPiece() == null)
+			return false;
+		if(dX != 1 && dX != -1)
 			return false;
 		if((dY == -1 || dY == 1) && moveTile.containsEnemy(this))
 			return true;
