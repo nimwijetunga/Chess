@@ -43,12 +43,6 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 		for(Piece i : tmp){
 			if(i.contains(mx, my) && i.isSelected() == false){
 				i.setSelected(true);
-				Color c;
-				if(wT)
-					c = Color.RED;
-				else
-					c = Color.GREEN;
-				i.getTile().setColor(c);
 				i.getTile().setSelected(true);
 			}
 		}
@@ -109,9 +103,9 @@ public class MouseHandler extends MouseAdapter implements MouseMotionListener{
 						if(t.getPiece() == null)
 							t.setColor(Color.MAGENTA);
 						else if(t.getPiece().getColor() == Type.BLACK)
-							t.setColor(Color.GREEN);
+							t.setColor(Color.YELLOW);
 						else if (t.getPiece().getColor() == Type.WHITE)
-							t.setColor(Color.RED);
+							t.setColor(Color.LIGHT_GRAY);
 					}else if(!t.contains(mx,my) && !t.isSelected())
 						t.setColor(t.getOrigColor());
 				}
